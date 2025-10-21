@@ -28,15 +28,10 @@ export const metadata: Metadata = {
   creator: "DeepSeek contributors",
   publisher: "DeepSeek",
   keywords: [
-    "DeepSeek-OCR",
-    "OCR",
-    "document AI",
-    "vision encoder",
-    "visual-text compression",
-    "vLLM",
-    "Transformers",
-    "Flash Attention",
-    "bfloat16",
+    "deepseek ocr",
+    "deepseek ocr paper",
+    "deepseek ocr arxiv",
+    "deepseek api",
   ],
   category: "technology",
   alternates: {
@@ -73,7 +68,10 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" }
+    ],
   },
   themeColor: "#0f1524",
 };
@@ -90,6 +88,7 @@ export default function RootLayout({
     url: SITE_URL,
     description:
       "Explore the boundaries of visual-text compression. vLLM and Transformers inference, native/dynamic modes, prompt examples, and quick start.",
+    keywords: "deepseek ocr, deepseek ocr paper, deepseek ocr arxiv, deepseek api",
   };
 
   const jsonLdOrg = {

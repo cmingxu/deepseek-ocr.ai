@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1524"/>
+      <stop offset="1" stop-color="#141b2f"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="url(#g)"/>
+  <!-- Lens (O) -->
+  <circle cx="16" cy="16" r="7" fill="none" stroke="#8aa0ff" stroke-width="2"/>
+  <!-- Scan lines (C-like accents) -->
+  <path d="M6 11h7M19 21h7" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+  <!-- Small focus dot -->
+  <circle cx="16" cy="16" r="1.5" fill="#e2e8f0"/>
+</svg>
