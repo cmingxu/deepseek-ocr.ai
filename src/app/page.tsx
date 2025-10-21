@@ -110,7 +110,7 @@ export default function Page() {
         <div className="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Contextual Optical Compression
+              OCR your visual-text with DeepSeek-OCR
             </h1>
             <p className="mt-4 text-muted-foreground text-lg">
               DeepSeek-OCR is a vision encoder for visual-text compression and structured understanding, optimized for vLLM and Transformers inference.
