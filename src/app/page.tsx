@@ -1,10 +1,43 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Page() {
+  const sections = [
+    "overview",
+    "features",
+    "modes",
+    "prompts",
+    "getting-started",
+    "resources",
+  ];
+  const [activeSection, setActiveSection] = useState<string>("overview");
+
+  useEffect(() => {
+    const handler = () => {
+      let currentId = sections[0];
+      const offset = 120; // header height approx
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top;
+        if (top <= offset) currentId = id;
+      }
+      setActiveSection(currentId);
+    };
+    handler();
+    window.addEventListener("scroll", handler, { passive: true });
+    window.addEventListener("resize", handler);
+    return () => {
+      window.removeEventListener("scroll", handler);
+      window.removeEventListener("resize", handler);
+    };
+  }, []);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <a
@@ -17,15 +50,52 @@ export default function Page() {
       <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-14 items-center justify-between px-4">
           <div className="flex items-center gap-2">
+            <Image src="/logo.svg" alt="DeepSeek-OCR Logo" width={28} height={28} className="rounded" />
             <span className="text-xl font-semibold">DeepSeek-OCR</span>
           </div>
           <nav aria-label="Primary navigation" className="hidden md:flex items-center space-x-6">
-            <a href="#overview" className="text-sm hover:text-primary">Overview</a>
-            <a href="#features" className="text-sm hover:text-primary">Features</a>
-            <a href="#modes" className="text-sm hover:text-primary">Modes</a>
-            <a href="#prompts" className="text-sm hover:text-primary">Prompts</a>
-            <a href="#getting-started" className="text-sm hover:text-primary">Get Started</a>
-            <a href="#resources" className="text-sm hover:text-primary">Resources</a>
+            <a
+              href="#overview"
+              className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left aria-[current=page]:text-primary aria-[current=page]:after:scale-x-100"
+              aria-current={activeSection === "overview" ? "page" : undefined}
+            >
+              Overview
+            </a>
+            <a
+              href="#features"
+              className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left aria-[current=page]:text-primary aria-[current=page]:after:scale-x-100"
+              aria-current={activeSection === "features" ? "page" : undefined}
+            >
+              Features
+            </a>
+            <a
+              href="#modes"
+              className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left aria-[current=page]:text-primary aria-[current=page]:after:scale-x-100"
+              aria-current={activeSection === "modes" ? "page" : undefined}
+            >
+              Modes
+            </a>
+            <a
+              href="#prompts"
+              className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left aria-[current=page]:text-primary aria-[current=page]:after:scale-x-100"
+              aria-current={activeSection === "prompts" ? "page" : undefined}
+            >
+              Prompts
+            </a>
+            <a
+              href="#getting-started"
+              className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left aria-[current=page]:text-primary aria-[current=page]:after:scale-x-100"
+              aria-current={activeSection === "getting-started" ? "page" : undefined}
+            >
+              Get Started
+            </a>
+            <a
+              href="#resources"
+              className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left aria-[current=page]:text-primary aria-[current=page]:after:scale-x-100"
+              aria-current={activeSection === "resources" ? "page" : undefined}
+            >
+              Resources
+            </a>
           </nav>
         </div>
       </header>
