@@ -135,7 +135,7 @@ Content-Type: application/json
         <ul className="mt-2 list-disc list-inside text-sm">
           <li>Use HTTPS endpoints only.</li>
           <li>Prefer PDF uploads for multi-page documents.</li>
-          <li>Prompts can nudge extraction (e.g., "focus on text").</li>
+          <li>Prompts can nudge extraction (e.g., &quot;focus on text&quot;).</li>
         </ul>
       </section>
     </main>

@@ -78,8 +78,9 @@ export default function AppUploaderPage() {
       }
       const data = await res.json();
       setResult(data.text || "");
-    } catch (err: any) {
-      alert(err?.message || "Unexpected error");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Unexpected error";
+      alert(message);
     } finally {
       setLoading(false);
     }
