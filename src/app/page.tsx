@@ -5,14 +5,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import DotGrid from "@/components/ui/DotGrid";
 
 export default function Page() {
   const sections = [
     "features",
     "prompts",
-    "getting-started",
     "visualizations",
-    "resources",
+    "pricing",
   ];
   const [activeSection, setActiveSection] = useState<string>("features");
   const [isHeroImageOpen, setHeroImageOpen] = useState(false);
@@ -54,12 +54,16 @@ export default function Page() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <a
-        href="#features"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground"
-      >
-        Skip to content
-      </a>
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <DotGrid dotSize={6} gap={34} proximity={110} baseColor="rgba(82,39,255,0.06)" activeColor="rgba(82,39,255,0.10)" shockRadius={80} shockStrength={0.2} />
+      </div>
+      <div className="relative z-10">
+        <a
+          href="#features"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground"
+        >
+          Skip to content
+        </a>
       {/* Header */}
       <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-14 items-center justify-between px-4">
@@ -80,48 +84,45 @@ export default function Page() {
               className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left aria-[current=page]:text-primary aria-[current=page]:after:scale-x-100"
               aria-current={activeSection === "prompts" ? "page" : undefined}
             >
-              Prompts
+              Usage
             </a>
             <a
-              href="#getting-started"
+              href="#pricing"
               className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left aria-[current=page]:text-primary aria-[current=page]:after:scale-x-100"
-              aria-current={activeSection === "getting-started" ? "page" : undefined}
+              aria-current={activeSection === "pricing" ? "page" : undefined}
             >
-              Get Started
+              Pricing
             </a>
-            <a
-              href="#resources"
-              className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left aria-[current=page]:text-primary aria-[current=page]:after:scale-x-100"
-              aria-current={activeSection === "resources" ? "page" : undefined}
-            >
-              Resources
-            </a>
+            <Link href="/docs" className="relative inline-flex items-center pb-3 text-sm transition-colors hover:text-primary after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left">
+              Docs
+            </Link>
             <Button asChild size="sm" className="ml-2">
-              <a href="/DeepSeek_OCR_paper.pdf" download aria-label="DeepSeek OCR Paper">
-                Download Paper
-              </a>
+              <Link href="/app" aria-label="Open app page">
+                Try Online
+              </Link>
             </Button>
           </nav>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
-        <div className="grid gap-8 md:grid-cols-2 md:gap-12 items-center">
+      <section className="relative container mx-auto px-4 py-16 md:py-24">
+
+        <div className="relative z-10 grid gap-8 md:grid-cols-2 md:gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-              OCR your visual-text with DeepSeek-OCR
+              Convert <span className="text-primary">PDF and Image</span> to  <span className="text-primary">clean text and tables</span> with DeepSeek-OCR
             </h1>
             <p className="mt-4 text-muted-foreground text-lg">
-              DeepSeek-OCR is a vision encoder for visual-text compression and structured understanding, optimized for vLLM and Transformers inference.
+              Extract text, tables, and layouts from scans, photos, and PDFs. Get accurate results in Markdown, CSV, or plain text — with cutting‑edge AI DeepSeek‑OCR.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild>
-                <a href="mailto:cming.xu@gmail.com?subject=DeepSeek-OCR%20Start%20Now" aria-label="Start Now via email">Start Now</a>
+                <Link href="/app" aria-label="Open app page">Try Online</Link>
               </Button>
               <Button variant="outline" asChild>
                 <Link href="https://github.com/deepseek-ai/DeepSeek-OCR" target="_blank" rel="noopener noreferrer">
-                  GitHub Repo
+                  For Developers
                 </Link>
               </Button>
             </div>
@@ -181,7 +182,7 @@ export default function Page() {
       <section id="features" aria-labelledby="features-title" className="border-t">
         <div className="container mx-auto px-4 py-12">
           <h2 id="features-title" className="text-2xl md:text-3xl font-semibold">Features</h2>
-          <p className="mt-3 text-muted-foreground">Unified highlights and capabilities with clear icons and detailed descriptions.</p>
+          <p className="mt-3 text-muted-foreground">Everything you need to turn images and PDFs into usable text.</p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {/* Dual Inference Backends */}
             <Card className="group relative overflow-hidden rounded-xl border bg-card shadow-sm transition hover:shadow-md hover:border-primary/40">
@@ -191,10 +192,10 @@ export default function Page() {
                     <path d="M13 2 L3 14 h7 l-1 8 12-14 h-7 l1-6" />
                   </svg>
                 </div>
-                <CardTitle className="text-base">Dual Inference Backends</CardTitle>
+                <CardTitle className="text-base">Fast extraction</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">Runs on both vLLM server and Hugging Face Transformers. Optimized for streaming and batch workloads with consistent outputs.</p>
+                <p className="text-sm text-muted-foreground">Processes pages quickly and keeps formatting stable for consistent results.</p>
               </CardContent>
             </Card>
 
@@ -207,10 +208,10 @@ export default function Page() {
                     <path d="M7 8 h10 M7 12 h10 M7 16 h6" />
                   </svg>
                 </div>
-                <CardTitle className="text-base">Memory‑Efficient Attention</CardTitle>
+                <CardTitle className="text-base">Works on long documents</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">Flash Attention and BF16 reduce memory footprint while maintaining high throughput. Suitable for long documents and large batches.</p>
+                <p className="text-sm text-muted-foreground">Handles multi‑page PDFs and large scans without skipping content.</p>
               </CardContent>
             </Card>
 
@@ -227,10 +228,10 @@ export default function Page() {
                     <circle cx="10" cy="18" r="2" />
                   </svg>
                 </div>
-                <CardTitle className="text-base">Compression Modes</CardTitle>
+                <CardTitle className="text-base">Lower cost with fewer tokens</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">Choose between Native fixed‑ratio for predictable speed or Dynamic task‑guided compression for complex layouts and figures.</p>
+                <p className="text-sm text-muted-foreground">Efficient processing uses fewer tokens so you pay less.</p>
               </CardContent>
             </Card>
 
@@ -243,10 +244,10 @@ export default function Page() {
                     <path d="M9 10 h6 M9 14 h6" />
                   </svg>
                 </div>
-                <CardTitle className="text-base">Promptable Structured Outputs</CardTitle>
+                <CardTitle className="text-base">Accurate tables and layout</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">Control outputs via prompt patterns: Markdown, CSV, JSON, key‑value pairs. Consistent fields and stable formatting.</p>
+                <p className="text-sm text-muted-foreground">Extracts clean CSV tables and preserves page structure where it matters.</p>
               </CardContent>
             </Card>
 
@@ -259,10 +260,10 @@ export default function Page() {
                     <path d="M3 10 h18 M9 4 v16 M15 4 v16" />
                   </svg>
                 </div>
-                <CardTitle className="text-base">Table & Layout Extraction</CardTitle>
+                <CardTitle className="text-base">Handles complex layouts</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">Extract tables to CSV and page layout to JSON with bounding boxes. Works across documents, forms, and multi‑column pages.</p>
+                <p className="text-sm text-muted-foreground">Understands columns, headers, captions, and figures for clean output.</p>
               </CardContent>
             </Card>
 
@@ -275,10 +276,10 @@ export default function Page() {
                     <path d="M3 12 h18 M12 3 v18 M5 8 h14 M5 16 h14" />
                   </svg>
                 </div>
-                <CardTitle className="text-base">Multilingual OCR</CardTitle>
+                <CardTitle className="text-base">Multilingual text</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">Robust recognition across English, Chinese, and mixed documents with text normalization and punctuation handling.</p>
+                <p className="text-sm text-muted-foreground">Recognizes English, Chinese, and mixed documents with proper punctuation.</p>
               </CardContent>
             </Card>
           </div>
@@ -288,7 +289,7 @@ export default function Page() {
       {/* Prompts */}
       <section id="prompts" aria-labelledby="prompts-title" className="border-t">
         <div className="container mx-auto px-4 py-12">
-          <h2 id="prompts-title" className="text-2xl md:text-3xl font-semibold">Prompt Examples</h2>
+          <h2 id="prompts-title" className="text-2xl md:text-3xl font-semibold">How to use</h2>
           <p className="mt-3 text-muted-foreground">Quick starters for common OCR tasks and grounding.</p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <Card>
@@ -351,109 +352,10 @@ export default function Page() {
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader className="flex items-center justify-between">
-                <CardTitle className="text-base">Chinese Text Example</CardTitle>
-                <Button variant="ghost" size="sm" onClick={() => navigator.clipboard.writeText(`# '先天下之忧而忧'`)}>Copy</Button>
-              </CardHeader>
-              <CardContent>
-                <pre className="rounded-md bg-muted p-4 text-sm overflow-x-auto"><code>{`# '先天下之忧而忧'`}</code></pre>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
 
-      {/* Getting Started */}
-      <section id="getting-started" aria-labelledby="getting-title" className="border-t">
-        <div className="container mx-auto px-4 py-12">
-          <h2 id="getting-title" className="text-2xl md:text-3xl font-semibold">Get Started</h2>
-          <p className="mt-3 text-muted-foreground">
-            Quick start: clone the repo, create the conda env (CUDA 11.8 + Torch 2.6.0), and install dependencies including Flash-Attn. Then choose a path below — vLLM (edit <code>config.py</code> and run the scripts) or Transformers (use the Python snippet). For details and updates, see{" "}
-            <a href="https://github.com/deepseek-ai/DeepSeek-OCR" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              GitHub
-            </a>.
-          </p>
-          <div className="mt-6 space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Install</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <pre className="rounded-md bg-muted p-4 text-sm overflow-x-auto"><code>{`# Environment: CUDA 11.8 + torch 2.6.0
-# Clone the repo
-git clone https://github.com/deepseek-ai/DeepSeek-OCR.git
-
-# Create and activate conda env
-conda create -n deepseek-ocr python=3.12.9 -y
-conda activate deepseek-ocr
-
-# Install PyTorch (CUDA 11.8) and vLLM wheel
-pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118
-pip install vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl
-
-# Project requirements and Flash-Attn
-pip install -r requirements.txt
-pip install flash-attn==2.7.3 --no-build-isolation`}</code></pre>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>vLLM Inference</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <pre className="rounded-md bg-muted p-4 text-sm overflow-x-auto"><code>{`# Edit INPUT_PATH/OUTPUT_PATH and settings in:
-# DeepSeek-OCR-master/DeepSeek-OCR-vllm/config.py
-
-cd DeepSeek-OCR-master/DeepSeek-OCR-vllm
-
-# Image streaming output
-python run_dpsk_ocr_image.py
-
-# PDF (e.g., ~2500 tokens/s on A100-40G)
-python run_dpsk_ocr_pdf.py
-
-# Batch eval for benchmarks
-python run_dpsk_ocr_eval_batch.py`}</code></pre>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Transformers Inference</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <pre className="rounded-md bg-muted p-4 text-sm overflow-x-auto"><code>{`from transformers import AutoModel, AutoTokenizer
-import torch, os
-
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
-model_name = 'deepseek-ai/DeepSeek-OCR'
-
-tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
-model = AutoModel.from_pretrained(model_name, _attn_implementation='flash_attention_2', trust_remote_code=True, use_safetensors=True)
-model = model.eval().cuda().to(torch.bfloat16)
-
-prompt = "<image>\n<|grounding|>Convert the document to markdown. "
-image_file = 'your_image.jpg'
-output_path = 'your/output/dir'
-
-res = model.infer(
-    tokenizer,
-    prompt=prompt,
-    image_file=image_file,
-    output_path=output_path,
-    base_size=1024,
-    image_size=640,
-    crop_mode=True,
-    save_results=True,
-    test_compress=True
-)`}</code></pre>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* Visualizations */}
       <section id="visualizations" aria-labelledby="visualizations-title" className="border-t">
@@ -497,6 +399,24 @@ res = model.infer(
         </div>
       </section>
 
+      {/* Real‑World Example */}
+      <section id="real-world-example" aria-labelledby="real-world-title" className="border-t">
+        <div className="container mx-auto px-4 py-12">
+          <h2 id="real-world-title" className="text-2xl md:text-3xl font-semibold">Real‑World Example</h2>
+          <p className="mt-3 text-muted-foreground">A practical document image demonstrating DeepSeek‑OCR on real input.</p>
+          <div className="mt-6">
+            <button
+              type="button"
+              onClick={() => { setVizSrc('/real-world-example.jpg'); setVizAlt('Real world example'); setVizOpen(true); }}
+              aria-label="View large real-world example"
+              className="relative block w-full aspect-[4/3] overflow-hidden rounded-lg border bg-muted cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <Image src="/real-world-example.jpg" alt="Real world document example" fill className="object-cover" sizes="100vw" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {vizOpen && (
         <div
           className="fixed inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm"
@@ -530,22 +450,75 @@ res = model.infer(
         </div>
       )}
 
-      {/* Resources */}
-      <section id="resources" aria-labelledby="resources-title" className="border-t">
+
+      {/* Pricing */}
+      <section id="pricing" aria-labelledby="pricing-title" className="border-t">
         <div className="container mx-auto px-4 py-12">
-          <h2 id="resources-title" className="text-2xl md:text-3xl font-semibold">Resources</h2>
-          <ul className="list-disc pl-5 space-y-2 text-sm">
-            <li>
-              <a
-                href="https://github.com/deepseek-ai/DeepSeek-OCR"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                GitHub Repository
-              </a>
-            </li>
-          </ul>
+          <h2 id="pricing-title" className="text-2xl md:text-3xl font-semibold">Pricing</h2>
+          <p className="mt-3 text-muted-foreground">Simple plans for online and API access.</p>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Free */}
+            <Card className="relative overflow-hidden rounded-xl border bg-card shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-base">Free</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold">$0</div>
+                <p className="mt-1 text-xs text-muted-foreground">10 uses/day (online + API)</p>
+                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                  <li>• Image/PDF OCR</li>
+                  <li>• Output formats: Text, Markdown, CSV</li>
+                  <li>• Max file size: 10MB</li>
+                  <li>• Rate‑limited queue</li>
+                  <li>• Community support</li>
+                </ul>
+                <Button asChild className="mt-6 w-full">
+                  <Link href="/app">Start Free</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Pro */}
+            <Card className="relative overflow-hidden rounded-xl border bg-card shadow-sm ring-1 ring-primary/30">
+              <CardHeader>
+                <CardTitle className="text-base">Pro</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold">$29</div>
+                <p className="mt-1 text-xs text-muted-foreground">1000 uses (online + API)</p>
+                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                  <li>• Priority processing</li>
+                  <li>• Larger files up to 25MB</li>
+                  <li>• Batch uploads</li>
+                  <li>• Email support</li>
+                  <li>• Export formats: Text/Markdown/CSV</li>
+                </ul>
+                <Button className="mt-6 w-full">Get Pro</Button>
+              </CardContent>
+            </Card>
+
+            {/* Enterprise */}
+            <Card className="relative overflow-hidden rounded-xl border bg-card shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-base">Enterprise</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-3xl font-bold">Custom</div>
+                <p className="mt-1 text-xs text-muted-foreground">Unlimited usage, SSO, SLA</p>
+                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                  <li>• Dedicated support & onboarding</li>
+                  <li>• On‑prem or private cloud</li>
+                  <li>• SSO/SAML, audit logs</li>
+                  <li>• SOC 2 / GDPR alignment</li>
+                  <li>• Custom models & regional routing</li>
+                </ul>
+                <Button asChild variant="outline" className="mt-6 w-full">
+                  <a href="mailto:cming.xu@gmail.com?subject=DeepSeek-OCR%20Enterprise">Contact Sales</a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -649,9 +622,11 @@ res = model.infer(
 
           <div className="mt-10 border-t pt-6 text-xs text-muted-foreground">
             <p>© {new Date().getFullYear()} DeepSeek‑OCR.ai. All rights reserved.</p>
+            <p className="mt-2">This site is not affiliated with DeepSeek.com.</p>
           </div>
         </div>
       </footer>
+      </div>
     </main>
   );
 }
