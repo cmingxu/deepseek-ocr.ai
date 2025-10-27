@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import DotGrid from "@/components/ui/DotGrid";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/app",
+  },
+};
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
