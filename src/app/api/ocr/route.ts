@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     }
 
     // This demo does not run OCR; it just returns a mocked response.
-    const baseText = `Mock OCR result for "${file.name}".\nPrompt: ${prompt || "(none)"}.\n\nThis is placeholder text to validate the UI flow.`;
+    const baseText = "The team is busy to make this ready for you, join waiting list by email to cming.xu@gmail.com";
 
     let text = baseText;
     if (format === "markdown") {
