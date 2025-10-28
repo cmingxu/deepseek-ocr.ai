@@ -108,6 +108,21 @@ export default function Page() {
       {/* Hero */}
       <section className="relative container mx-auto px-4 py-16 md:py-24">
 
+        {/* Announcement pill bar */}
+        <div className="mb-8 flex justify-center">
+          <div className="inline-flex items-center justify-center gap-3 rounded-full border bg-white/70 backdrop-blur px-4 py-2 shadow-sm">
+            <div className="text-sm">
+              🚀 Hot: You should use AI-powered Browser Now, it will transform your browsing experience!
+            </div>
+            <div className="px-3 py-1 text-2xs font-semibold rounded-full bg-primary text-primary-foreground">
+                <Link href="https://pplx.ai/cmingxu22530" target="_blank" rel="noopener noreferrer" aria-label="Visit Browser Now website">
+                  Get Comet Free
+                </Link>
+              </div>
+
+          </div>
+        </div>
+
         <div className="relative z-10 grid gap-8 md:grid-cols-2 md:gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">

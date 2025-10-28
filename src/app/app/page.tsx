@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 
 type OutputFormat = "markdown" | "csv" | "text";
 
@@ -111,6 +112,20 @@ export default function AppUploaderPage() {
 
   return (
     <main className="min-h-screen w-full bg-gray-50 text-gray-900">
+        {/* Announcement pill bar */}
+        <div className="py-8 flex justify-center">
+          <div className="inline-flex items-center justify-center gap-3 rounded-full border bg-white/70 backdrop-blur px-4 py-2 shadow-sm">
+            <div className="text-sm">
+              🚀 Hot: You should use AI-powered Browser Now, it will transform your browsing experience!
+            </div>
+            <div className="px-3 py-1 text-2xs font-semibold rounded-full bg-primary text-primary-foreground">
+                <Link href="https://pplx.ai/cmingxu22530" target="_blank" rel="noopener noreferrer" aria-label="Visit Browser Now website">
+                  Get Comet Free
+                </Link>
+              </div>
+
+          </div>
+        </div>
       <section className="mx-auto max-w-4xl px-6 py-12">
         <h1 className="text-3xl font-bold tracking-tight">Image to Text Converter</h1>
         <p className="mt-2 text-sm text-gray-600">
