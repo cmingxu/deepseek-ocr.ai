@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 
 type OutputFormat = "markdown" | "csv" | "text";
@@ -116,7 +116,7 @@ export default function AppUploaderPage() {
         <div className="py-8 flex justify-center">
           <div className="inline-flex items-center justify-center gap-3 rounded-full border bg-white/70 backdrop-blur px-4 py-2 shadow-sm">
             <div className="text-sm">
-              🚀 Hot: You should use Perplexity's AI-powered Browser Now, it will transform your browsing experience!
+              🚀 Hot: You should use Perplexity&apos;s AI-powered Browser Now, it will transform your browsing experience!
             </div>
             <div className="px-3 py-1 text-2xs font-semibold rounded-full bg-primary text-primary-foreground">
                 <Link href="https://pplx.ai/cmingxu22530" target="_blank" rel="noopener noreferrer" aria-label="Visit Browser Now website">
