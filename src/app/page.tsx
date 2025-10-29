@@ -193,6 +193,63 @@ export default function Page() {
         </div>
       )}
 
+      {/* Promo Bar below hero */}
+      <section className="relative">
+        <div className="mx-auto max-w-4xl px-6 my-4">
+          <div className="relative overflow-hidden rounded-2xl">
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-primary via-indigo-600 to-primary/80"
+              aria-hidden="true"
+            />
+            <div className="relative p-6 md:p-8 text-white">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="max-w-2xl">
+                  <div className="mb-3">
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-yellow-300 text-black shadow-sm">
+                      LIMITED TIME
+                    </span>
+                  </div>
+                  <h2 className="text-lg md:text-xl font-semibold">
+                    Comet AI Browser from Perplexity, Accept your invite with Perplexity Pro included
+                  </h2>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    <li className="flex items-start gap-2">
+                      <span className="text-lime-300">✓</span>
+                      <span>
+                        Get 1 month of Perplexity Pro for free, use GPT‑5, Claude 4.5 for free
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-lime-300">✓</span>
+                      <span>
+                        Earn $10–20 per referral! People making $3000+
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex gap-3 shrink-0">
+                  <a
+                    href="https://pplx.ai/cmingxu22530"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-black hover:bg-white/90"
+                  >
+                    Accept Invite
+                  </a>
+                  <Link
+                    href="/docs"
+                    aria-label="Learn more"
+                    className="inline-flex items-center rounded-full border border-white px-4 py-2 text-sm font-medium text-white hover:bg-white/10"
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section id="features" aria-labelledby="features-title" className="border-t">
         <div className="container mx-auto px-4 py-12">
